@@ -68,7 +68,8 @@ class GIST(BaseDataset):
     name: str = "GIST"
     dim: int = 960
     metric_type: MetricType = MetricType.L2
-    use_shuffled: bool = False
+    use_shuffled: bool = config.USE_SHUFFLED_DATA
+    with_gt: bool = True,
     _size_label: dict = {
         100_000: SizeLabel(100_000, "SMALL", 1),
         1_000_000: SizeLabel(1_000_000, "MEDIUM", 1),
@@ -100,7 +101,8 @@ class SIFT(BaseDataset):
     name: str = "SIFT"
     dim: int = 128
     metric_type: MetricType = MetricType.L2
-    use_shuffled: bool = False
+    use_shuffled: bool = config.USE_SHUFFLED_DATA
+    with_gt: bool = True,
     _size_label: dict = {
         500_000: SizeLabel(500_000, "SMALL", 1,),
         5_000_000: SizeLabel(5_000_000, "MEDIUM", 1),

@@ -41,6 +41,33 @@ class CaseType(Enum):
     Performance1536D5M1P = 13
     Performance1536D500K99P = 14
     Performance1536D5M99P = 15
+    
+    Performance960D100K90P=16
+    Performance128D500K90P=17
+    
+    Performance960D100K80P=18
+    Performance128D500K80P=19
+    
+    Performance960D100K70P=20
+    Performance128D500K70P=21
+    
+    Performance960D100K60P=22
+    Performance128D500K60P=23
+    
+    Performance960D100K50P=24
+    Performance128D500K50P=25
+    
+    Performance960D100K40P=26
+    Performance128D500K40P=27
+    
+    Performance960D100K30P=28
+    Performance128D500K30P=29
+    
+    Performance960D100K20P=30
+    Performance128D500K20P=31
+    
+    Performance960D100K10P=32
+    Performance128D500K10P=33
 
     Custom = 100
 
@@ -268,7 +295,186 @@ Results will show index building time, recall, and maximum QPS."""
     load_timeout: float | int = config.LOAD_TIMEOUT_1536D_5M
     optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_1536D_5M
 
+class Performance960D100K90P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance960D100K90P
+    filter_rate: float | int | None = 0.90
+    dataset: DatasetManager = Dataset.GIST.manager(100_000)
+    name: str = "Filtering Search Performance Test (100K Dataset, 960 Dim, Filter 90%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Gist 100k vectors</b>, 960 dimensions) under a filtering rate (<b>90% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
 
+class Performance128D500K90P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance128D500K90P
+    filter_rate: float | int | None = 0.90
+    dataset: DatasetManager = Dataset.SIFT.manager(500_000)
+    name: str = "Filtering Search Performance Test (500K Dataset, 128 Dim, Filter 90%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Sift 500k vectors</b>, 128 dimensions) under a filtering rate (<b>90% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+    
+class Performance960D100K80P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance960D100K80P
+    filter_rate: float | int | None = 0.80
+    dataset: DatasetManager = Dataset.GIST.manager(100_000)
+    name: str = "Filtering Search Performance Test (100K Dataset, 960 Dim, Filter 80%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Gist 100k vectors</b>, 960 dimensions) under a filtering rate (<b>80% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+
+class Performance128D500K80P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance128D500K80P
+    filter_rate: float | int | None = 0.80
+    dataset: DatasetManager = Dataset.SIFT.manager(500_000)
+    name: str = "Filtering Search Performance Test (500K Dataset, 128 Dim, Filter 80%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Sift 500k vectors</b>, 128 dimensions) under a filtering rate (<b>80% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+    
+class Performance960D100K70P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance960D100K70P
+    filter_rate: float | int | None = 0.70
+    dataset: DatasetManager = Dataset.GIST.manager(100_000)
+    name: str = "Filtering Search Performance Test (100K Dataset, 960 Dim, Filter 70%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Gist 100k vectors</b>, 960 dimensions) under a filtering rate (<b>70% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+
+class Performance128D500K70P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance128D500K70P
+    filter_rate: float | int | None = 0.70
+    dataset: DatasetManager = Dataset.SIFT.manager(500_000)
+    name: str = "Filtering Search Performance Test (500K Dataset, 128 Dim, Filter 70%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Sift 500k vectors</b>, 128 dimensions) under a filtering rate (<b>70% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+    
+class Performance960D100K60P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance960D100K60P
+    filter_rate: float | int | None = 0.60
+    dataset: DatasetManager = Dataset.GIST.manager(100_000)
+    name: str = "Filtering Search Performance Test (100K Dataset, 960 Dim, Filter 60%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Gist 100k vectors</b>, 960 dimensions) under a filtering rate (<b>60% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+
+class Performance128D500K60P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance128D500K60P
+    filter_rate: float | int | None = 0.60
+    dataset: DatasetManager = Dataset.SIFT.manager(500_000)
+    name: str = "Filtering Search Performance Test (500K Dataset, 128 Dim, Filter 60%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Sift 500k vectors</b>, 128 dimensions) under a filtering rate (<b>60% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+    
+class Performance960D100K50P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance960D100K50P
+    filter_rate: float | int | None = 0.50
+    dataset: DatasetManager = Dataset.GIST.manager(100_000)
+    name: str = "Filtering Search Performance Test (100K Dataset, 960 Dim, Filter 50%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Gist 100k vectors</b>, 960 dimensions) under a filtering rate (<b>50% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+
+class Performance128D500K50P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance128D500K50P
+    filter_rate: float | int | None = 0.50
+    dataset: DatasetManager = Dataset.SIFT.manager(500_000)
+    name: str = "Filtering Search Performance Test (500K Dataset, 128 Dim, Filter 50%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Sift 500k vectors</b>, 128 dimensions) under a filtering rate (<b>50% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+    
+class Performance960D100K40P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance960D100K40P
+    filter_rate: float | int | None = 0.40
+    dataset: DatasetManager = Dataset.GIST.manager(100_000)
+    name: str = "Filtering Search Performance Test (100K Dataset, 960 Dim, Filter 40%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Gist 100k vectors</b>, 960 dimensions) under a filtering rate (<b>40% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+
+class Performance128D500K40P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance128D500K40P
+    filter_rate: float | int | None = 0.40
+    dataset: DatasetManager = Dataset.SIFT.manager(500_000)
+    name: str = "Filtering Search Performance Test (500K Dataset, 128 Dim, Filter 40%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Sift 500k vectors</b>, 128 dimensions) under a filtering rate (<b>40% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+
+class Performance960D100K30P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance960D100K30P
+    filter_rate: float | int | None = 0.30
+    dataset: DatasetManager = Dataset.GIST.manager(100_000)
+    name: str = "Filtering Search Performance Test (100K Dataset, 960 Dim, Filter 30%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Gist 100k vectors</b>, 960 dimensions) under a filtering rate (<b>30% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+
+class Performance128D500K30P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance128D500K30P
+    filter_rate: float | int | None = 0.30
+    dataset: DatasetManager = Dataset.SIFT.manager(500_000)
+    name: str = "Filtering Search Performance Test (500K Dataset, 128 Dim, Filter 30%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Sift 500k vectors</b>, 128 dimensions) under a filtering rate (<b>30% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+    
+class Performance960D100K20P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance960D100K20P
+    filter_rate: float | int | None = 0.20
+    dataset: DatasetManager = Dataset.GIST.manager(100_000)
+    name: str = "Filtering Search Performance Test (100K Dataset, 960 Dim, Filter 20%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Gist 100k vectors</b>, 960 dimensions) under a filtering rate (<b>20% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+
+class Performance128D500K20P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance128D500K20P
+    filter_rate: float | int | None = 0.20
+    dataset: DatasetManager = Dataset.SIFT.manager(500_000)
+    name: str = "Filtering Search Performance Test (500K Dataset, 128 Dim, Filter 20%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Sift 500k vectors</b>, 128 dimensions) under a filtering rate (<b>20% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+
+class Performance960D100K10P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance960D100K10P
+    filter_rate: float | int | None = 0.10
+    dataset: DatasetManager = Dataset.GIST.manager(100_000)
+    name: str = "Filtering Search Performance Test (100K Dataset, 960 Dim, Filter 10%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Gist 100k vectors</b>, 960 dimensions) under a filtering rate (<b>10% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+
+class Performance128D500K10P(PerformanceCase):
+    case_id: CaseType = CaseType.Performance128D500K10P
+    filter_rate: float | int | None = 0.10
+    dataset: DatasetManager = Dataset.SIFT.manager(500_000)
+    name: str = "Filtering Search Performance Test (500K Dataset, 128 Dim, Filter 10%)"
+    description: str = """This case tests the search performance of a vector database with a small dataset (<b>Sift 500k vectors</b>, 128 dimensions) under a filtering rate (<b>10% vectors</b>), at varying parallel levels.
+Results will show index building time, recall, and maximum QPS."""
+    load_timeout: float | int = config.LOAD_TIMEOUT_DEFAULT
+    optimize_timeout: float | int | None = config.OPTIMIZE_TIMEOUT_DEFAULT
+    
 type2case = {
     CaseType.CapacityDim960: CapacityDim960,
     CaseType.CapacityDim128: CapacityDim128,
@@ -290,5 +496,32 @@ type2case = {
 
     CaseType.Performance1536D500K99P: Performance1536D500K99P,
     CaseType.Performance1536D5M99P: Performance1536D5M99P,
+    
+    CaseType.Performance960D100K90P: Performance960D100K90P,
+    CaseType.Performance128D500K90P: Performance128D500K90P,
+    
+    CaseType.Performance960D100K80P: Performance960D100K80P,
+    CaseType.Performance128D500K80P: Performance128D500K80P,
+    
+    CaseType.Performance960D100K70P: Performance960D100K70P,
+    CaseType.Performance128D500K70P: Performance128D500K70P,
+    
+    CaseType.Performance960D100K60P: Performance960D100K60P,
+    CaseType.Performance128D500K60P: Performance128D500K60P,
+    
+    CaseType.Performance960D100K50P: Performance960D100K50P,
+    CaseType.Performance128D500K50P: Performance128D500K50P,
+    
+    CaseType.Performance960D100K40P: Performance960D100K40P,
+    CaseType.Performance128D500K40P: Performance128D500K40P,
+    
+    CaseType.Performance960D100K30P: Performance960D100K30P,
+    CaseType.Performance128D500K30P: Performance128D500K30P,
+    
+    CaseType.Performance960D100K20P: Performance960D100K20P,
+    CaseType.Performance128D500K20P: Performance128D500K20P,
+    
+    CaseType.Performance960D100K10P: Performance960D100K10P,
+    CaseType.Performance128D500K10P: Performance128D500K10P
 
 }

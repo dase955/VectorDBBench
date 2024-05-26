@@ -67,19 +67,22 @@ class AliyunOSSReader(DatasetReader):
 
     def read(self, dataset: str, files: list[str], local_ds_root: pathlib.Path):
         downloads = []
-        if not local_ds_root.exists():
-            log.info(f"local dataset root path not exist, creating it: {local_ds_root}")
-            local_ds_root.mkdir(parents=True)
-            downloads = [(pathlib.PurePosixPath("benchmark", dataset, f), local_ds_root.joinpath(f)) for f in files]
+        if not is_local_dataset(dataset):
+            if not local_ds_root.exists():
+                log.info(f"local dataset root path not exist, creating it: {local_ds_root}")
+                local_ds_root.mkdir(parents=True)
+                downloads = [(pathlib.PurePosixPath("benchmark", dataset, f), local_ds_root.joinpath(f)) for f in files]
 
+            else:
+                for file in files:
+                    remote_file = pathlib.PurePosixPath("benchmark", dataset, file)
+                    local_file = local_ds_root.joinpath(file)
+
+                    if (not local_file.exists()) or (not self.validate_file(remote_file, local_file)):
+                        log.info(f"local file: {local_file} not match with remote: {remote_file}; add to downloading list")
+                        downloads.append((remote_file, local_file))
         else:
-            for file in files:
-                remote_file = pathlib.PurePosixPath("benchmark", dataset, file)
-                local_file = local_ds_root.joinpath(file)
-
-                if (not local_file.exists()) or (not self.validate_file(remote_file, local_file)):
-                    log.info(f"local file: {local_file} not match with remote: {remote_file}; add to downloading list")
-                    downloads.append((remote_file, local_file))
+            log.info(f"load custom local dataset : {dataset}")
 
         if len(downloads) == 0:
             return
@@ -115,19 +118,20 @@ class AwsS3Reader(DatasetReader):
 
     def read(self, dataset: str, files: list[str], local_ds_root: pathlib.Path):
         downloads = []
-        if not local_ds_root.exists():
-            log.info(f"local dataset root path not exist, creating it: {local_ds_root}")
-            local_ds_root.mkdir(parents=True)
-            downloads = [pathlib.PurePosixPath(self.remote_root, dataset, f) for f in files]
+        if not is_local_dataset(dataset):
+            if not local_ds_root.exists():
+                log.info(f"local dataset root path not exist, creating it: {local_ds_root}")
+                local_ds_root.mkdir(parents=True)
+                downloads = [pathlib.PurePosixPath(self.remote_root, dataset, f) for f in files]
 
-        else:
-            for file in files:
-                remote_file = pathlib.PurePosixPath(self.remote_root, dataset, file)
-                local_file = local_ds_root.joinpath(file)
+            else:
+                for file in files:
+                    remote_file = pathlib.PurePosixPath(self.remote_root, dataset, file)
+                    local_file = local_ds_root.joinpath(file)
 
-                if (not local_file.exists()) or (not self.validate_file(remote_file, local_file)):
-                    log.info(f"local file: {local_file} not match with remote: {remote_file}; add to downloading list")
-                    downloads.append(remote_file)
+                    if (not local_file.exists()) or (not self.validate_file(remote_file, local_file)):
+                        log.info(f"local file: {local_file} not match with remote: {remote_file}; add to downloading list")
+                        downloads.append(remote_file)
 
         if len(downloads) == 0:
             return
@@ -151,3 +155,6 @@ class AwsS3Reader(DatasetReader):
             return False
 
         return True
+    
+def is_local_dataset(dataset: str) -> bool:
+    return  dataset in ['gist_small_100k', 'sift_small_500k']
