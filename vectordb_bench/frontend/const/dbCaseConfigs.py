@@ -60,7 +60,13 @@ CASE_LIST_WITH_DIVIDER = [
     CaseType.Performance128D500K20P,
     DIVIDER,
     CaseType.Performance960D100K10P,
-    CaseType.Performance128D500K10P
+    CaseType.Performance128D500K10P,
+    DIVIDER,
+    CaseType.Performance960D100K1P,
+    CaseType.Performance128D500K1P,
+    DIVIDER,
+    CaseType.Performance960D100K99P,
+    CaseType.Performance128D500K99P,
 ]
 
 CASE_LIST = [item for item in CASE_LIST_WITH_DIVIDER if isinstance(item, CaseType)]
