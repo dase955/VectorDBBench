@@ -55,8 +55,14 @@ def isLowerIsBetterMetric(metric: str) -> bool:
 
 def calc_recall(count: int, ground_truth: list[int], got: list[int]) -> float:
     recalls = np.zeros(count)
+    '''
+    ground_truth = ground_truth.to_list()
+    with open('/home/ubuntu/VectorDBBench/output', 'a') as f:
+        f.write('gt : ' + str(len(ground_truth)) + '\n' + str(ground_truth) + '\n')
+        f.write('got : ' + str(len(got)) + '\n' + str(got) + '\n')
+    '''
     for i, result in enumerate(got):
         if result in ground_truth:
             recalls[i] = 1
 
-    return np.mean(recalls)
+    return np.mean(recalls)  
